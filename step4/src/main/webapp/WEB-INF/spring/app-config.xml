@@ -1,22 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- contendrá las definiciones de beans (POJO's) usados por el DispatcherServlet -->
-<!-- este archivo es el WebApplicationContext donde situaremos todos los componentes -->
+<!-- este archivo es el WebApplicationContext donde situaremos todos los 
+	componentes -->
 
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd 
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
+
+	<bean id="clientManager" class="es.unileon.springapp.service.SimpleClientManager">
+		<property name="clients">
+			<list>
+				<ref bean="Client1" />
+				<ref bean="Client2" />
+				<ref bean="Client3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="Client1" class="es.unileon.springapp.domain.Person">
+		<property name="name" value="Laura" />
+		<property name="surnames" value="Perez" />
+		<property name="dni" value = "71234567M"/>
+		<property name="address">
+			<ref bean="direction1"/>
+		</property>
+	</bean>
+
+	
+	<bean id="Client2" class="es.unileon.springapp.domain.Person">
+		<property name="name" value="Pepito" />
+		<property name="surnames" value="Sanchez" />
+		<property name="dni" value = "71285667M"></property>
+		<property name="address">
+			<ref bean="direction1"/>
+		</property>
+	</bean>
+	
+	<bean id="Client3" class="es.unileon.springapp.domain.Person">
+		<property name="name" value="Tamara" />
+		<property name="surnames" value="Gonzalez" />
+		<property name="dni" value = "71234568M"/>
+		<property name="address">
+			<ref bean="direction1"/>
+		</property>
+	</bean>
+	
+	<bean id="direction1" class="es.unileon.springapp.domain.Address">
+		<property name="street" value="Street1" />
+	</bean>
+	
+	
 	<!-- Scans the classpath of this application for @Components to deploy as 
 		beans -->
-		
-				<!-- SIN ESTO NO FUNCIONA EN EL EXPLORADOR -->
-				
-	<context:component-scan base-package="com.companyname.springapp.web" /> <!-- Configures the @Controller programming model -->
+
+	<!-- SIN ESTO NO FUNCIONA EN EL EXPLORADOR -->
+
+	<context:component-scan base-package="es.unileon.springapp.web" /> 
+	<!-- Configures the @Controller programming model -->
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/views/"></property> 
+		<property name="suffix" value=".jsp"></property> 
+	</bean>
+	
 	<mvc:annotation-driven />
 </beans>
