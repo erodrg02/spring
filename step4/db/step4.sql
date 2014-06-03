@@ -16,17 +16,6 @@ CREATE TABLE clients (
   profession varchar(255)
 ); 
 
-CREATE TABLE address(
-	id BIGINT PRIMARY KEY AUTO_INCREMENT,
-	street varchar(255),
-	blockNumber int,
-	floor int,
-	door char(5),
-	locality varchar(255),
-	province varchar(255),
-	zipCode int
-);
-
 DROP TABLE clients;
-DROP TABLE address;
+
 CREATE INDEX clients_name ON clients(name); 

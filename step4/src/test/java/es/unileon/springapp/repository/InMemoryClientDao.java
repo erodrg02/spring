@@ -17,5 +17,6 @@ public class InMemoryClientDao implements ClientDao {
 		}
 
 		public void saveClient(Person client) {
+			clientList.add(client);
 		}
 }

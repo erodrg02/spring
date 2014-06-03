@@ -20,35 +20,24 @@ public class SimpleClientManagerTest {
 	private Person client1;
 	private Person client2;
 	private SimpleClientManager clientsManager;
-	private String locality;
-	private String province;
-	private char door;
-	private int floor;
-	private String street;
 
 	@Before
 	public void setUp() throws Exception {
 		clientsManager = new SimpleClientManager();
 		clients = new ArrayList<Person>();
-		// client1 = new Person();
-		this.locality = "Leon";
-		this.province = "Leon";
-		this.door = 'A';
-		this.floor = 3;
-		this.street = "Avn Universidad";
 
-		client1 = new Person("pepito", "Lopez", "soltero", 123456789, 0,
+		client1 = new Person("pepito", "Lopez", "mi calle","soltero", 123456789, 0,
 				"estudiante", "9135289L");
 
 		ClientDao clientDao = new InMemoryClientDao(clients);
 		clientsManager.setClientDao(clientDao);
 
-		// clientsManager.setClients(new ArrayList<Person>());
-		client2 = new Person();
+		client2 = new Person("juno", "Lopez", "su calle","soltero", 123686789, 0,
+				"estudiante", "1346758L");
 	}
 
 	@Test
-	public void testGetClientsWithNoProducts() {
+	public void testGetClientsWithNoClients() {
 		clientsManager = new SimpleClientManager();
 		clientsManager.setClientDao(new InMemoryClientDao(null));
 		assertNull(clientsManager.getClients());
@@ -57,16 +46,19 @@ public class SimpleClientManagerTest {
 	@Test
 	public void testGetClients() {
 		clientsManager.addClient(client1);
-		assertEquals(client1, clientsManager.getClients().get(0));
-		clientsManager.addClient(client2);
-		assertEquals(client2, clientsManager.getClients().get(1));
+		if(clientsManager.getClients().size()!=0){
+			assertEquals(client1, clientsManager.getClients().get(0));
+			clientsManager.addClient(client2);
+			assertEquals(client2, clientsManager.getClients().get(1));
+		}
 	}
 
 	@Test
 	public void testAddClient() {
 		clientsManager.addClient(client1);
 		clientsManager.addClient(client2);
-		assertEquals(2, clientsManager.getClients().size());
+		System.out.println(clientsManager.getClients().size());
+		assertEquals(clientsManager.getClients().size(),2);
 	}
 
 }

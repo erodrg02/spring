@@ -20,8 +20,8 @@
 			cellpadding="5">
 			<tr>
 				<td align="right">Name:</td>
-				<td width="20%"><form:input path="name" /></td>
-				<td width="20%"><form:errors path="name" cssClass="error" /></td>
+				<td width="20%"><form:input path="personName" /></td>
+				<td width="20%"><form:errors path="personName" cssClass="error" /></td>
 				<td align="right">Surname:</td>
 				<td width="20%"><form:input path="surnames" /></td>
 				<td width="20%"><form:errors path="surnames" cssClass="error" />
@@ -30,52 +30,33 @@
 				<td width="20%"><form:input path="dni" /></td>
 				<td width="20%"><form:errors path="dni" cssClass="error" /></td>
 				</td>
-
+				<!-- Phone Number -->
+				<td align="right" width="20%">Phone Number:</td>
+				<td width="20%"><form:input path="phoneNumber1" /></td>
+				<td width="20%"><form:errors path="phoneNumber1"
+						cssClass="error" /></td>
 			</tr>
 		</table>
 		<br>
-		<table width="65%" bgcolor="f8f8ff" border="0" cellspacing="0"
+		<table width="50%" bgcolor="f8f8ff" border="0" cellspacing="0"
 			cellpadding="5">
 
 			<tr>
-				<!-- STREET -->
-				<td align="right" width="20%">Street:</td>
-				<td width="20%"><form:input path="street" /></td>
-				<td width="20%"><form:errors path="street" cssClass="error" />
-				</td>
-
-				<!-- BLOCK NUMBER -->
-				<td align="right" width="20%">Block Number:</td>
-				<td width="20%"><form:input path="blockNumber" /></td>
-				<td width="20%"><form:errors path="blockNumber"
-						cssClass="error" /></td>
-				<!-- FLOOR -->
-				<td align="right" width="20%">Floor:</td>
-				<td width="20%"><form:input path="floor" /></td>
-				<td width="20%"><form:errors path="floor" cssClass="error" /></td>
-				<!-- DOOR -->
-				<td align="right" width="20%">Door:</td>
-				<td width="20%"><form:input path="door" /></td>
-				<td width="20%"><form:errors path="door" cssClass="error" /></td>
+				<!-- Address -->
+				<td align="right" width="20%">Address:</td>
+				<td width="20%"><form:input path="address" /></td>
+				<td width="20%"><form:errors path="address" cssClass="error" />
 			</tr>
-
-			<tr>
-				<!-- LOCALITY -->
-				<td align="right" width="20%">Locality:</td>
-				<td width="20%"><form:input path="locality" /></td>
-				<td width="20%"><form:errors path="locality" cssClass="error" />
+			<tr>	
+				<!-- Civil State -->
+				<td align="right" width="20%">Civil State:</td>
+				<td width="20%"><form:input path="civilState" /></td>
+				<td width="20%"><form:errors path="civilState" cssClass="error" />
 				</td>
-				<!-- PROVINCE -->
-				<td align="right" width="20%">Province:</td>
-				<td width="20%"><form:input path="province" /></td>
-				<td width="20%"><form:errors path="province" cssClass="error" />
-				</td>
-
-				<!-- ZIP CODE -->
-				<td align="right" width="50%">Zip Code:</td>
-				<td width="20%"><form:input path="zipCode" /></td>
-				<td width="20%"><form:errors path="zipCode" cssClass="error" />
-				</td>
+				<!-- PROFESSION -->
+				<td align="right" width="20%">Profession:</td>
+				<td width="20%"><form:input path="profession" /></td>
+				<td width="20%"><form:errors path="profession" cssClass="error" /></td>
 			</tr>
 		</table>
 		<br>

@@ -111,9 +111,9 @@ public class Person  implements Serializable{
 	 * @throws MalformedHandlerException
 	 */
 
-	public Person(String name, String surnames, /*Address address,*/
+	public Person(String name, String surnames, String address,
 			String civilState, int phoneNumber1, int phoneNumber2,
-			String profession,/* int dniNumber, char dniLetter*/String dni) {
+			String profession,String dni) {
 		this.personName = name;
 		this.surnames = surnames;
 		//this.address = address;
@@ -124,12 +124,6 @@ public class Person  implements Serializable{
 		this.dni=dni;
 	}
 
-//	public Person(String name, String surnames,/* Address address,*/ String dni) {
-//		this.name = name;
-//		this.surnames = surnames;
-//		//this.address = address;
-//		this.dni = dni;
-//	}
 
 	public Person() {
 

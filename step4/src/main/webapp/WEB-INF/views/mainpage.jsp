@@ -14,19 +14,12 @@
 			cellpadding="5">
 		
 			<tr>
-				<td align="left" width=10%><c:out value="${person.name}" /></td>
+				<td align="left" width=10%><c:out value="${person.personName}" /></td>
 		
 				<td align="left" width=90%><c:out value="${person.surnames}" /></td>
 			</tr>
 		</table>
 		<br>
-		<table width="50%" bgcolor="f8f8ff" border="0" cellspacing="0"
-			cellpadding="5">
-			<tr>
-				<td align="left"><c:out value="${person.address}" /></td>
-			</tr>
-			</table>
-			<br>
 		<table width="50%" bgcolor="f8f8ff" border="0" cellspacing="0"
 			cellpadding="5">
 			<tr>

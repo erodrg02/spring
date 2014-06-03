@@ -25,16 +25,17 @@ public class RegisterClientController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(@Valid ClientData clientData, BindingResult result) {
 		if (result.hasErrors()) {
+			System.out.println("error:" + result.getErrorCount() + result.getAllErrors().toString());
 			return "registerclient";
 		}
+		System.out.println("AQUI ESTAMOS");
 
 		/*Address address = new Address(clientData.getStreet(),
 				clientData.getBlockNumber(), clientData.getFloor(),
 				clientData.getDoor(), clientData.getLocality(),
 				clientData.getProvince(), clientData.getZipCode());*/
-		Person client = new Person(clientData.getName(),
-			clientData.getSurnames(), /*address,*/ "soltero", 123456789,0,"estudiante",clientData.getDni());
-
+		Person client = new Person(clientData.getPersonName(),
+			clientData.getSurnames(), clientData.getAddress(),clientData.getCivilState(), clientData.getPhoneNumber1(),0,clientData.getProfession(),clientData.getDni());
 		clientManager.addClient(client);
 
 		return "redirect:/mainpage.htm";

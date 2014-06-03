@@ -6,6 +6,4 @@
 	version="1.0">
 	<persistence-unit name="step4PU" transaction-type="RESOURCE_LOCAL">
 	</persistence-unit>
-
-
 </persistence>

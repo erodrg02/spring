@@ -34,7 +34,7 @@ public class ClientDataTest {
 		this.street = "Avn Universidad";
 		/*this.address = new Address(street, blockNumber, floor, door, locality,
 				province, zipCode);*/
-		client = new Person("pepito", "Lopez","soltero",123456789,0,"estudiante","9135289L");
+		client = new Person("pepito", "Lopez","mi calle","soltero",123456789, 0,"estudiante","9135289L");
 	}
 
 	@Test

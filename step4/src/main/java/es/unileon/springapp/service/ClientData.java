@@ -13,7 +13,7 @@ public class ClientData {
 	 */
 	@Size(min = 2)
 	@NotEmpty
-	private String name;
+	private String personName;
 
 	/**
 	 * surnames of the person
@@ -21,52 +21,10 @@ public class ClientData {
 	@NotEmpty
 	private String surnames;
 
-	/**
-	 * address of the person
-	 */
-	/**
-	 * Street
-	 */
-	@NotEmpty
-	private String street;
-
-	/**
-	 * Block in the street
-	 */
-	private int blockNumber;
-
-	/**
-	 * Floor in the block
-	 */
-	private int floor;
-
-	/**
-	 * Door in the floor
-	 */
-
-	private char door;
-
-	/**
-	 * Locality
-	 */
-	@NotEmpty
-	@Size(min = 3)
-	private String locality;
-
-	/**
-	 * Province
-	 */
-	@NotEmpty
-	@Size(min = 3)
-	private String province;
-
-	/**
-	 * Zip Code
-	 */
-
-	@Min(99)
-	private int zipCode;
-
+	private int phoneNumber1;
+	private int phoneNumber2;
+	private String address;
+	
 	/**
 	 * DNI
 	 */
@@ -86,61 +44,6 @@ public class ClientData {
 		this.dni = dni;
 	}
 
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public int getBlockNumber() {
-		return blockNumber;
-	}
-
-	public void setBlockNumber(int blockNumber) {
-		this.blockNumber = blockNumber;
-	}
-
-	public int getFloor() {
-		return floor;
-	}
-
-	public void setFloor(int floor) {
-		this.floor = floor;
-	}
-
-	public char getDoor() {
-		return door;
-	}
-
-	public void setDoor(char door) {
-		this.door = door;
-	}
-
-	public String getLocality() {
-		return locality;
-	}
-
-	public void setLocality(String locality) {
-		this.locality = locality;
-	}
-
-	public String getProvince() {
-		return province;
-	}
-
-	public void setProvince(String province) {
-		this.province = province;
-	}
-
-	public int getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
-	}
 
 	/**
 	 * marritage state of the person
@@ -148,26 +51,34 @@ public class ClientData {
 	private String civilState;
 
 	/**
-	 * phone numbers of the person
-	 */
-	private int[] phoneNumbers;
-
-	/**
 	 * proffesion of the person
 	 */
 	private String profession;
 
-	/**
-	 * birth date of the person
-	 */
-	private Date birthDate;
 
-	public String getName() {
-		return name;
+
+	public String getPersonName() {
+		return personName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPersonName(String personName) {
+		this.personName = personName;
+	}
+
+	public int getPhoneNumber1() {
+		return phoneNumber1;
+	}
+
+	public void setPhoneNumber1(int phoneNumber1) {
+		this.phoneNumber1 = phoneNumber1;
+	}
+
+	public int getPhoneNumber2() {
+		return phoneNumber2;
+	}
+
+	public void setPhoneNumber2(int phoneNumber2) {
+		this.phoneNumber2 = phoneNumber2;
 	}
 
 	public String getSurnames() {
@@ -186,14 +97,6 @@ public class ClientData {
 		this.civilState = civilState;
 	}
 
-	public int[] getPhoneNumbers() {
-		return phoneNumbers;
-	}
-
-	public void setPhoneNumbers(int[] phoneNumbers) {
-		this.phoneNumbers = phoneNumbers;
-	}
-
 	public String getProfession() {
 		return profession;
 	}
@@ -202,11 +105,12 @@ public class ClientData {
 		this.profession = profession;
 	}
 
-	public Date getBirthDate() {
-		return birthDate;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
+	public void setAddress(String address) {
+		this.address = address;
 	}
+
 }
