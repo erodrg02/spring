@@ -3,19 +3,44 @@
 
 package es.unileon.springapp.domain;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Gonzalo
  */
-public class Person {
+
+@Entity
+@Table(name = "clients")
+public class Person  implements Serializable{
 
 	/**
 	 * Name of the person
 	 */
 	private String name;
 
+	 @Id
+	 @Column(name = "id")
+	 @GeneratedValue(strategy = GenerationType.AUTO)
+	 private int id;
+	 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
 	/**
 	 * DNI
 	 */
@@ -265,4 +290,13 @@ public class Person {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	
+	public int[] getPhoneNumbers() {
+		return phoneNumbers;
+	}
+
+	public void setPhoneNumbers(int[] phoneNumbers) {
+		this.phoneNumbers = phoneNumbers;
+	}
+
 }
