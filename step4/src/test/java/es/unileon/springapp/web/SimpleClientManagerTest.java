@@ -3,16 +3,20 @@ package es.unileon.springapp.web;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import es.unileon.springapp.domain.Address;
+//import es.unileon.springapp.domain.Address;
 import es.unileon.springapp.domain.Person;
+import es.unileon.springapp.repository.ClientDao;
+import es.unileon.springapp.repository.InMemoryClientDao;
 import es.unileon.springapp.service.SimpleClientManager;
 
 public class SimpleClientManagerTest {
 
+	private List<Person> clients;
 	private Person client1;
 	private Person client2;
 	private SimpleClientManager clientsManager;
@@ -21,22 +25,33 @@ public class SimpleClientManagerTest {
 	private char door;
 	private int floor;
 	private String street;
-	private Address address;
 
 	@Before
 	public void setUp() throws Exception {
 		clientsManager = new SimpleClientManager();
-		client1 = new Person();
+		clients = new ArrayList<Person>();
+		// client1 = new Person();
 		this.locality = "Leon";
 		this.province = "Leon";
 		this.door = 'A';
 		this.floor = 3;
 		this.street = "Avn Universidad";
-		this.address = new Address(street, 10, floor, door, locality, province,
-				1000);
-		client1 = new Person("pepito", "Lopez", this.address, "9135289L");
-		clientsManager.setClients(new ArrayList<Person>());
+
+		client1 = new Person("pepito", "Lopez", "soltero", 123456789, 0,
+				"estudiante", "9135289L");
+
+		ClientDao clientDao = new InMemoryClientDao(clients);
+		clientsManager.setClientDao(clientDao);
+
+		// clientsManager.setClients(new ArrayList<Person>());
 		client2 = new Person();
+	}
+
+	@Test
+	public void testGetClientsWithNoProducts() {
+		clientsManager = new SimpleClientManager();
+		clientsManager.setClientDao(new InMemoryClientDao(null));
+		assertNull(clientsManager.getClients());
 	}
 
 	@Test

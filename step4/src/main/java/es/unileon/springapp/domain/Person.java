@@ -4,8 +4,6 @@
 package es.unileon.springapp.domain;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,15 +20,22 @@ import javax.persistence.Table;
 @Table(name = "clients")
 public class Person  implements Serializable{
 
-	/**
-	 * Name of the person
+	
+	 /**
+	 * 
 	 */
-	private String name;
+	private static final long serialVersionUID = 1L;
 
-	 @Id
+	@Id
 	 @Column(name = "id")
 	 @GeneratedValue(strategy = GenerationType.AUTO)
 	 private int id;
+	 
+	 /**
+	 * Name of the person
+	*/
+	private String personName;
+
 	 
 	public int getId() {
 		return id;
@@ -54,7 +59,7 @@ public class Person  implements Serializable{
 	/**
 	 * address of the person
 	 */
-	private Address address;
+	//private Address address;
 
 	/**
 	 * marritage state of the person
@@ -64,17 +69,31 @@ public class Person  implements Serializable{
 	/**
 	 * phone numbers of the person
 	 */
-	private int[] phoneNumbers;
+	private int phoneNumber1;
+	public int getPhoneNumber1() {
+		return phoneNumber1;
+	}
+
+	public void setPhoneNumber1(int phoneNumber1) {
+		this.phoneNumber1 = phoneNumber1;
+	}
+
+	public int getPhoneNumber2() {
+		return phoneNumber2;
+	}
+
+	public void setPhoneNumber2(int phoneNumber2) {
+		this.phoneNumber2 = phoneNumber2;
+	}
+
+
+	private int phoneNumber2;
 
 	/**
 	 * proffesion of the person
 	 */
 	private String profession;
 
-	/**
-	 * birth date of the person
-	 */
-	private Date birthDate;
 
 	/**
 	 * Creates a new Person with all the data
@@ -92,67 +111,37 @@ public class Person  implements Serializable{
 	 * @throws MalformedHandlerException
 	 */
 
-	public Person(String name, String surnames, Address address,
+	public Person(String name, String surnames, /*Address address,*/
 			String civilState, int phoneNumber1, int phoneNumber2,
-			String profession, int dniNumber, char dniLetter, Date birthDate) {
-		this.name = name;
+			String profession,/* int dniNumber, char dniLetter*/String dni) {
+		this.personName = name;
 		this.surnames = surnames;
-		this.address = address;
+		//this.address = address;
 		this.civilState = civilState;
-		this.phoneNumbers = new int[2];
-		this.phoneNumbers[0] = phoneNumber1;
-		this.phoneNumbers[1] = phoneNumber2;
+		this.phoneNumber1=phoneNumber1;
+		this.phoneNumber2=phoneNumber2;
 		this.profession = profession;
-		this.birthDate = birthDate;
+		this.dni=dni;
 	}
 
-	public Person(String name, String surnames, Address address, String dni) {
-		this.name = name;
-		this.surnames = surnames;
-		this.address = address;
-		this.dni = dni;
-	}
+//	public Person(String name, String surnames,/* Address address,*/ String dni) {
+//		this.name = name;
+//		this.surnames = surnames;
+//		//this.address = address;
+//		this.dni = dni;
+//	}
 
 	public Person() {
 
 	}
 
-	/**
-	 *
-	 * @param name
-	 * @param surnames
-	 * @param address
-	 * @param civilState
-	 * @param phoneNumber1
-	 * @param phoneNumber2
-	 * @param profession
-	 * @param birthDate
-	 * @param foreingLetter
-	 * @param dniNumber
-	 * @param dniLetter
-	 * @throws MalformedHandlerException
-	 */
-	public Person(String name, String surnames, Address address,
-			String civilState, int phoneNumber1, int phoneNumber2,
-			String profession, Date birthDate, char foreingLetter,
-			int dniNumber, char dniLetter) {
-		this.name = name;
-		this.surnames = surnames;
-		this.address = address;
-		this.civilState = civilState;
-		this.phoneNumbers = new int[2];
-		this.phoneNumbers[0] = phoneNumber1;
-		this.phoneNumbers[1] = phoneNumber2;
-		this.profession = profession;
-		this.birthDate = birthDate;
-	}
 
 	/**
 	 *
 	 * @return the name of the person
 	 */
-	public String getName() {
-		return name;
+	public String getPersonName() {
+		return personName;
 	}
 
 	/**
@@ -160,8 +149,8 @@ public class Person  implements Serializable{
 	 * 
 	 * @param name
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setPersonName(String name) {
+		this.personName = name;
 	}
 
 	/**
@@ -185,18 +174,18 @@ public class Person  implements Serializable{
 	 * 
 	 * @return the address of the person
 	 */
-	public Address getAddress() {
-		return address;
-	}
+//	public Address getAddress() {
+//		return address;
+//	}
 
 	/**
 	 * Sets the address of the person
 	 * 
 	 * @param address
 	 */
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+//	public void setAddress(Address address) {
+//		this.address = address;
+//	}
 
 	/**
 	 * 
@@ -213,31 +202,6 @@ public class Person  implements Serializable{
 	 */
 	public void setCivilState(String civilState) {
 		this.civilState = civilState;
-	}
-
-	/**
-	 * 
-	 * @param pos
-	 * @return the phone number of the person in pos
-	 */
-	public int getPhoneNumber(int pos) {
-		if (pos <= 1 && pos >= 0)
-			return phoneNumbers[pos];
-		else
-			return 0;
-	}
-
-	/**
-	 * Sets a phone number of the person in pos
-	 * 
-	 * @param pos
-	 * @param phoneNumbers
-	 */
-	public void replacePhoneNumber(int pos, int phoneNumbers) {
-		if (pos <= 1 && pos >= 0)
-			this.phoneNumbers[pos] = phoneNumbers;
-		// else
-		// TODO Exception
 	}
 
 	/**
@@ -266,23 +230,6 @@ public class Person  implements Serializable{
 		this.profession = profession;
 	}
 
-	/**
-	 * 
-	 * @return the birth date of the person
-	 */
-	public Date getBirthDate() {
-		return birthDate;
-	}
-
-	/**
-	 * Sets the birth date of the person
-	 * 
-	 * @param birthDate
-	 */
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
 	public String getDni() {
 		return dni;
 	}
@@ -290,13 +237,155 @@ public class Person  implements Serializable{
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	
-	public int[] getPhoneNumbers() {
-		return phoneNumbers;
-	}
 
-	public void setPhoneNumbers(int[] phoneNumbers) {
-		this.phoneNumbers = phoneNumbers;
-	}
+	
+//	////////////////////////////////////////////////////////////////////////////////////
+//    
+//	 /**
+//     * Street
+//     */
+//    private String street;
+//   
+//    /**
+//     * Block in the street
+//     */
+//    //private int blockNumber;
+//    
+//    /**
+//     * Floor in the block
+//     */
+//    private int floor;
+//    
+//    /**
+//     * Door in the floor
+//     */
+//    private char door;
+//    
+//    /**
+//     * Locality
+//     */
+//    private String locality;
+//    
+//    /**
+//     * Province
+//     */
+//    private String province;
+//    
+//    /**
+//     * 
+//     */
+//    private int zipCode;
+//    
+//	/**
+//     * 
+//     * @return street
+//     */
+//    public String getStreet() {
+//        return street;
+//    }
+//
+//    /**
+//     * Sets the street
+//     * @param street 
+//     */
+//    public void setStreet(String street) {
+//        this.street = street;
+//    }
+//
+////    /**
+////     * 
+////     * @return the block number
+////     */
+////    public int getBlockNumber() {
+////        return blockNumber;
+////    }
+////
+////    /**
+////     * Sets the block number
+////     * @param blockNumber 
+////     */
+////    public void setBlockNumber(int blockNumber) {
+////        this.blockNumber = blockNumber;
+////    }
+//
+//    /**
+//     * 
+//     * @return the floor
+//     */
+//    public int getFloor() {
+//        return floor;
+//    }
+//
+//    /**
+//     * Sets the floor
+//     * @param floor 
+//     */
+//    public void setFloor(int floor) {
+//        this.floor = floor;
+//    }
+//
+//    /**
+//     * 
+//     * @return the door
+//     */
+//    public char getDoor() {
+//        return door;
+//    }
+//
+//    /**
+//     * Sets the door
+//     * @param door 
+//     */
+//    public void setDoor(char door) {
+//        this.door = door;
+//    }
+//
+//    /**
+//     * 
+//     * @return the locality
+//     */
+//    public String getLocality() {
+//        return locality;
+//    }
+//    
+//    /**
+//     * Sets the locality
+//     * @param locality 
+//     */
+//    public void setLocality(String locality) {
+//        this.locality = locality;
+//    }
+//
+//    /**
+//     * 
+//     * @return the province
+//     */
+//    public String getProvince() {
+//        return province;
+//    }
+//
+//    /**
+//     * Sets the province
+//     * @param province 
+//     */
+//    public void setProvince(String province) {
+//        this.province = province;
+//    }
+//
+//    /**
+//     * 
+//     * @return the zip code
+//     */
+//    public int getZipCode() {
+//        return zipCode;
+//    }
+//
+//    /**
+//     * Sets the zip code
+//     * @param zipCode 
+//     */
+//    public void setZipCode(int zipCode) {
+//        this.zipCode = zipCode;
+//    }
 
 }

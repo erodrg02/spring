@@ -11,15 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 import es.unileon.springapp.domain.Person;
 
 @Repository(value = "clientDao")
-
-public class JPAClientDao {
+public class JPAClientDao implements ClientDao {
 
 	private EntityManager em = null;
 
-    /*
-     * Sets the entity manager.
-     */
-    @PersistenceContext
+	/*
+	 * Sets the entity manager.
+	 */
+	@PersistenceContext
 	public void setEntityManager(EntityManager em) {
 		this.em = em;
 	}
@@ -31,19 +30,22 @@ public class JPAClientDao {
 	 * 
 	 * @return
 	 */
-    @Transactional(readOnly = true)
-    @SuppressWarnings("unchecked")
-    public List<Person> getClientList() {
-        return em.createQuery("select client from Person client order by client.id").getResultList();
-    }
-    
+
+	@Transactional(readOnly = true)
+	@SuppressWarnings("unchecked")
+	public List<Person> getClientList() {
+		return em.createQuery("select p from Person p order by p.id")
+				.getResultList();
+	}
+
 	/**
 	 * Esta vez hacemos un merge para almacenar el producto en la base de datos.
 	 * 
 	 * @param client
 	 */
+
 	@Transactional(readOnly = false)
-    public void saveProduct(Person client) {
-        em.merge(client);
-    }
+	public void saveClient(Person client) {
+		em.merge(client);
+	}
 }

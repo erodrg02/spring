@@ -21,47 +21,37 @@
 		<property name="basename" value="messages" />
 	</bean>
 
-	<bean id="clientManager" class="es.unileon.springapp.service.SimpleClientManager">
-		<property name="clients">
-			<list>
-				<ref bean="Client1" />
-				<ref bean="Client2" />
-				<ref bean="Client3" />
-			</list>
-		</property>
-	</bean>
-
 	<bean id="Client1" class="es.unileon.springapp.domain.Person">
-		<property name="name" value="Laura" />
+		<property name="personName" value="Laura" />
 		<property name="surnames" value="Perez" />
 		<property name="dni" value = "71234567M"/>
-		<property name="address">
+		<!-- <property name="address"> 
 			<ref bean="direction1"/>
-		</property>
+		</property>-->
 	</bean>
 
 	
 	<bean id="Client2" class="es.unileon.springapp.domain.Person">
-		<property name="name" value="Pepito" />
+		<property name="personName" value="Pepito" />
 		<property name="surnames" value="Sanchez" />
 		<property name="dni" value = "71285667M"></property>
-		<property name="address">
+		<!-- <property name="address"> 
 			<ref bean="direction1"/>
-		</property>
+		</property>-->
 	</bean>
 	
 	<bean id="Client3" class="es.unileon.springapp.domain.Person">
-		<property name="name" value="Tamara" />
+		<property name="personName" value="Tamara" />
 		<property name="surnames" value="Gonzalez" />
 		<property name="dni" value = "71234568M"/>
-		<property name="address">
+		<!-- <property name="address"> 
 			<ref bean="direction1"/>
-		</property>
+		</property>-->
 	</bean>
 	
-	<bean id="direction1" class="es.unileon.springapp.domain.Address">
+	<!--<bean id="direction1" class="es.unileon.springapp.domain.Address">
 		<property name="street" value="Street1" />
-	</bean>
+	</bean>  -->
 	
 	
 	<!-- Scans the classpath of this application for @Components to deploy as 
