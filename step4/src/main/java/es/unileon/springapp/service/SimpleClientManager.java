@@ -28,8 +28,6 @@ public class SimpleClientManager implements ClientManager {
 	@Override
 	public void addClient(Person client) {
 		List<Person> clients = clientDao.getClientList();
-		// clients.add(client);
-		
 		clientDao.saveClient(client);
 		System.out.println("Se ha añadido el cliente: "
 				+ client.getPersonName());
