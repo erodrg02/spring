@@ -7,6 +7,4 @@
 	
 	<persistence-unit name="step4PUtest" transaction-type="RESOURCE_LOCAL">
 	</persistence-unit>
-
- 
 </persistence>
